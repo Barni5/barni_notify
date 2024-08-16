@@ -17,7 +17,7 @@ RegisterCommand(Config.Command, function(source, args)
         if not xPlayer or (xPlayer.getGroup() and tableContains(Config.whitelist, xPlayer.getGroup())) then
             --print("Van jogod!")
             TriggerClientEvent('barni-bejelentes',-1,Config.Announceleftbordercolor,Config.Announceheadermessage,argString)
-        elseif not xPlayer or xPlayer.getGroup() == 'user' then
+        elseif not xPlayer or (xPlayer.getGroup() and not tableContains(Config.whitelist, xPlayer.getGroup())) then
             --print("Nincs jogod!")
             TriggerClientEvent('barni-sendnotify',source,Config.Nopremissionleftbordercolor,'barni-Notify',Config.Nopremissionmessage)
         end
